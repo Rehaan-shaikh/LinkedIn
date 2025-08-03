@@ -14,7 +14,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 export default function Page() {
-  const [formState, formAction] = useActionState(SignUp, {});
+  const [formState, formAction , isPending] = useActionState(SignUp, {});
   const router = useRouter();
   const [avatarPreview, setAvatarPreview] = useState(null);
 
@@ -119,10 +119,11 @@ export default function Page() {
         )}
 
         <Button
+        disabled = {isPending}
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-700 text-white"
         >
-          Agree & Join
+          {isPending ? 'Creating...' : 'Sign Up'}
         </Button>
       </form>
 

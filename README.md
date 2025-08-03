@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌐 Mini LinkedIn Community Platform
 
-## Getting Started
+This is a mini LinkedIn-like social platform built as part of an internship assignment for **CIAAN Cyber Tech Pvt Ltd**. It allows users to register, log in, post content, comment, like, and view other users' profiles. Built with modern full-stack technologies.
 
-First, run the development server:
+## 🔗 Live Demo
+
+👉 [Sign up | LinkedIn](https://linked-in-psi-ten.vercel.app/sign-in)  
+
+---
+
+## 🚀 Stack Used
+
+### Frontend:
+- **Next.js 14 (App Router)**
+- **Tailwind CSS** for UI
+- **ShadCN/UI** components
+
+### Backend:
+- **Node.js** with **Next.js API Routes**
+- **Prisma ORM** for database interaction
+
+### Database:
+- **PostgreSQL** (hosted on Neon)
+
+### Auth:
+- **JWT & Cookies** (Custom authentication system)
+
+---
+
+## ⚙️ Features
+
+- ✅ **User Authentication** (Register/Login using Email & Password)
+- ✅ **User Profile** with name, email, and bio
+- ✅ **Public Post Feed** with timestamp and author's name
+- ✅ **Create, Read, Like** posts
+- ✅ **Comment on posts**, and like comments
+- ✅ **Search** users or posts using the search input
+- ✅ **Profile Page** with user's posts (click avatar to view)
+- ✅ **Responsive UI** for all devices
+
+---
+
+## 🧑‍💻 How to Run Locally
+
+1. **Clone the repository**
 
 ```bash
+git clone https://github.com/Rehaan-shaikh/LinkedIn.git
+cd LinkedIn
+Install Dependencies
+
+
+npm install
+Set Up Environment Variables
+Create a .env file in the root directory and add:
+
+CLOUDINARY_CLOUD_NAME=xyz
+CLOUDINARY_API_KEY=xyz
+CLOUDINARY_API_SECRET=xyz
+DATABASE_URL="xyz"
+
+Push Prisma Schema
+
+npx prisma db push
+Run the Development Server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+App will be live at: http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Frontend:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+You can create a new account from the Live Demo using any email and password.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+🧩 Bonus Features
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 🖼️ Click avatar to view profile  
+- 💬 Click a post to view all comments  
+- ❤️ Like/unlike posts delete and comments 
+- Can update and manage account from leftside bar
+- 🔍 Search by typing and pressing Enter or clicking the search icon
