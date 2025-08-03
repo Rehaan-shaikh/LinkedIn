@@ -6,6 +6,10 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/actions/user";
 
+import { Sheet, SheetTrigger, SheetContent, SheetTitle } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react"; // Icon for mobile sidebar trigger
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -35,20 +39,37 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}>
         {/* Background layer */}
-        <div className="grid-background"/>
+        <div className="grid-background" />
 
-        {/* Foreground content */}
+        {/* Mobile sidebar trigger */}
+        <div className="sm:hidden p-4">
+          <Sheet>
+            <SheetTitle className="text-lg font-bold">
+              
+            </SheetTitle>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="w-5 h-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="p-0">
+              <LeftSideBar user={user} />
+            </SheetContent>
+          </Sheet>
+        </div>
+
+        {/* Foreground content layout */}
         <div className="flex justify-between max-w-6xl mx-auto relative z-10">
-          {/* Left Sidebar */}
+          {/* Left Sidebar for desktop */}
           <div className="hidden sm:inline h-screen sticky top-0">
             <LeftSideBar user={user} />
           </div>
 
           {/* Main content */}
-<main className="w-2xl flex-1">{children}</main>
+          <main className="w-2xl flex-1">{children}</main>
 
-          {/* Right Sidebar */}
-          <div className="lg:flex-col p-3 h-screen  hidden lg:flex w-[24rem]">
+          {/* Right Sidebar for large screens */}
+          <div className="lg:flex-col p-3 h-screen hidden lg:flex w-[24rem]">
             <RightSideBar />
           </div>
         </div>

@@ -1,4 +1,5 @@
 'use client'
+
 import { SignOut } from '@/lib/actions/user';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -19,8 +20,8 @@ export default function Sidebar({ user }) {
   }
 
   return (
-    <div className="flex flex-col p-4 pt-10 h-screen items-center">
-      <div className="flex flex-col justify-between bg-[#f9f2ee] rounded-xl shadow-md w-full  px-4 py-6">
+    <div className="flex flex-col p-4 pt-10 h-full sm:h-screen items-center overflow-y-auto">
+      <div className="flex flex-col justify-between bg-[#f9f2ee] rounded-xl shadow-md w-full px-4 py-6">
         {/* Top section: Logo + Navigation */}
         <div className="flex flex-col gap-6">
           {/* Logo */}
@@ -36,19 +37,17 @@ export default function Sidebar({ user }) {
             <HiHome className="w-7 h-7" />
             <span className="font-bold hidden xl:inline">Home</span>
           </Link>
+        </div>
 
         {/* Bottom section: Profile + Signout */}
-        <div className="flex flex-col items-center gap-4 border-t border-gray-200 pt-6">
-          
-          {/* MiniProfile component if needed */}
+        <div className="flex flex-col items-center gap-4 border-t border-gray-200 pt-6 mt-6">
           <MiniProfile user={user} />
 
-          {/* Username */}
+          {/* Username and Email */}
           <div className="text-center">
             <h2 className="font-semibold text-sm text-gray-800">{user.username}</h2>
             <p className="text-xs text-gray-500">{user.email}</p>
           </div>
-
 
           {/* Sign Out Button */}
           <button
@@ -58,9 +57,6 @@ export default function Sidebar({ user }) {
             Sign Out
           </button>
         </div>
-        </div>
-
-
       </div>
     </div>
   );
